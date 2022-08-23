@@ -9,7 +9,7 @@ parts:
     chapters:
     - file: cv
     - file: publications
-    - file: deep-learning/C2_W1_Lab01_Neurons_and_Layers.ipynb
+    - file: deep-learning/fourier_transform.ipynb
   # - caption: Name of Not-numbered Part 2
   #   chapters:
   #   - file: path/to/part2/chapter1
