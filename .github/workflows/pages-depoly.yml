@@ -18,7 +18,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-
+    # Setup Python (faster than using Python container)
+     - name: Setup Python 3.9
+       uses: actions/setup-python@v3
+       with:
+         python-version: 3.9  
     # Install dependencies
     - name: Install pipenv
       run: |
