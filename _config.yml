@@ -3,8 +3,9 @@
 title: Kun Zhou Space
 author: Kun Zhou
 copyright: "2022" 
-logo: docs/logo.png
+logo: docs/logo_normal_distribution.png
 # exclude_patterns: ["cache"]
+exclude_patterns: [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints"]
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
@@ -37,4 +38,5 @@ launch_buttons:
 html:
   use_issues_button: true
   use_repository_button: true
+  home_page_in_navbar: false # Whether to include your home page in the left Navigation Bar
 

@@ -9,7 +9,7 @@ parts:
     chapters:
     - file: cv
     - file: publications
-  #   - file: path/to/part1/chapter2
+    - file: deep-learning/C2_W1_Lab01_Neurons_and_Layers.ipynb
   # - caption: Name of Not-numbered Part 2
   #   chapters:
   #   - file: path/to/part2/chapter1
