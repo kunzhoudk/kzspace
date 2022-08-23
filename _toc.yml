@@ -9,7 +9,8 @@ parts:
     chapters:
     - file: cv
     - file: publications
-    - file: deep-learning/fourier_transform.ipynb
+    - file: deep-learning/fourier_transform
+    - file: notebooks
   # - caption: Name of Not-numbered Part 2
   #   chapters:
   #   - file: path/to/part2/chapter1

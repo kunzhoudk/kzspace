@@ -8,6 +8,7 @@ jupyter-book = "*"
 matplotlib = "*"
 numpy = "*"
 tensorflow = "*"
+scipy = "*"
 
 [dev-packages]
 
