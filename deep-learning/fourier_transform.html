@@ -731,9 +731,6 @@ y = \sin(30 \cdot 2\pi t) + \frac{1}{2} \sin(50 \cdot 2 \pi t)
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/fourier_transform_23_0.png" src="../_images/fourier_transform_23_0.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -746,9 +743,6 @@ y = \sin(30 \cdot 2\pi t) + \frac{1}{2} \sin(50 \cdot 2 \pi t)
 <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">rfreqs</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1500</span><span class="p">],</span> <span class="n">fft_mag</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1500</span><span class="p">])</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/fourier_transform_24_0.png" src="../_images/fourier_transform_24_0.png" />
 </div>
 </div>
 <p>In short, the FFT enables us to get frequency spectra out of a time signal. Hit a sample, get it to “sing” and you’ll find out all the frequencies in one shot. (You can repeat if you want to average and improve the signal to noise.. remember standard error.)</p>
@@ -769,13 +763,6 @@ y = \sin(30 \cdot 2\pi t) + \frac{1}{2} \sin(50 \cdot 2 \pi t)
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/local/mambaforge/lib/python3.9/site-packages/matplotlib/axes/_axes.py:7723: RuntimeWarning: divide by zero encountered in log10
-  Z = 10. * np.log10(spec)
-</pre></div>
-</div>
-<img alt="../_images/fourier_transform_27_1.png" src="../_images/fourier_transform_27_1.png" />
-</div>
 </div>
 <p>There’s a lot of data up there in the higher regions (overtones) but that’s not really where I’m singing.</p>
 <p>Let’s look at the lower frequency data - zero to 4000 Hz..</p>
@@ -788,9 +775,6 @@ y = \sin(30 \cdot 2\pi t) + \frac{1}{2} \sin(50 \cdot 2 \pi t)
 <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">specgram</span><span class="p">(</span><span class="n">doremi_downscale</span><span class="p">,</span> <span class="n">Fs</span><span class="o">=</span><span class="n">downscale</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;plasma&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/fourier_transform_29_0.png" src="../_images/fourier_transform_29_0.png" />
 </div>
 </div>
 <p>Not only can we see the increasing frequency in the scale, but it’s possible to see overtones at <span class="math notranslate nohighlight">\(2\times\)</span>, <span class="math notranslate nohighlight">\(3\times\)</span>, and higher frequencies. This is one thing that separates natural sounds from some artificial sounds (buzzers and the like).</p>
