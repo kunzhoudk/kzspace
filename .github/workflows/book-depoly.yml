@@ -42,8 +42,13 @@ jobs:
       run: |
         pipenv install --deploy --dev
     
+    # start virtual env
+    - name: Activate virtual env
+      run: |
+        pipenv shell 
+    
     # check virtual env
-    - name: check virtualenv
+    - name: Check virtual env
       run: |
         pip -V 
 
