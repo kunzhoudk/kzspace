@@ -17,7 +17,7 @@ jobs:
   deploy-jupyter-book:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     # Setup Python (faster than using Python container)
     - name: Setup Python 3.9
