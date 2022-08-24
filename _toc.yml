@@ -7,8 +7,9 @@ root: intro
 parts:
   - caption: About me
     chapters:
-    - file: cv
-    - file: publications
+    - file: about-me/cv
+    - file: about-me/publications
+    
     - file: deep-learning/fourier_transform
     - file: notebooks
   # - caption: Name of Not-numbered Part 2
