@@ -1,29 +1,33 @@
-name: deploy-juputer-book-pages
+name: deploy
 
-# Only run this when the master branch changes
 on:
+  # Trigger the deploy on push to main branch
   push:
     branches:
-    - main
-    # If your git repository has the Jupyter Book within some-subfolder next to
-    # unrelated files, you can make this run only if a file within that specific
-    # folder has been modified.
-    #
-    # paths:
-    # - some-subfolder/**
+      - main
+  schedule:
+    # jupyter-book is updated regularly, let's run this deployment every month in case something fails
+    # <minute [0,59]> <hour [0,23]> <day of the month [1,31]> <month of the year [1,12]> <day of the week [0,6]>
+    # https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07
+    # https://crontab.guru/every-month
+    # Run cron job every month
+    - cron: '0 0 1 * *'
 
-# This job installs dependencies, builds the book, and pushes it to `gh-pages`
-jobs:
-  deploy-book:
-    runs-on: ubuntu-latest
+jobs: 
+  # This job deploys the example book
+  deploy-example-book:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        python-version: [3.9]
     steps:
-    - uses: actions/checkout@v3
-
-    # Setup Python (faster than using Python container)
-    - name: Setup Python 3.9
-      uses: actions/setup-python@v3
+    - uses: actions/checkout@v2
+    # Install CC
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v1
       with:
-        python-version: 3.9  
+        python-version: ${{ matrix.python-version }}
 
     - name: Check python version
       run: |
