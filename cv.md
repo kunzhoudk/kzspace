@@ -1,6 +1,6 @@
 # Short CV
 
-I work as an optimisation engineer in [AGCO](https://www.agcocorp.com) Randers Innovation Center. I received my PhD from Aarhus University, the research [group of Operations Management](https://ece.au.dk/en/research/key-areas-in-research-and-development/communication-control-and-automation/operations-management) in 2015.
+I am working as an optimisation engineer in [AGCO](https://www.agcocorp.com) Randers Innovation Center since the year 2018. I received my PhD from Aarhus University, the research [group of Operations Management](https://ece.au.dk/en/research/key-areas-in-research-and-development/communication-control-and-automation/operations-management) in 2015.
 My research focuses on the following topics:
 
 📌 Operations planning: mission planning, task scheduling and allocation
