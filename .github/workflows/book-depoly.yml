@@ -14,7 +14,7 @@ on:
 
 # This job installs dependencies, builds the book, and pushes it to `gh-pages`
 jobs:
-  jupyter-book-pages:
+  book-deploy:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
