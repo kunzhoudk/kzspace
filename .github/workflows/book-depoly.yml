@@ -38,6 +38,7 @@ jobs:
       run: |
         pipenv install --deploy --dev
     
+    # check virtual env
     - name: check virtualenv
         pip -V 
 
