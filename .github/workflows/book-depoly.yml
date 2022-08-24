@@ -42,9 +42,10 @@ jobs:
       run: |
         pipenv install --deploy --dev
     
-    # # check virtual env
-    # - name: check virtualenv
-    #     pip -V 
+    # check virtual env
+    - name: check virtualenv
+      run: |
+        pip -V 
 
     # # Build the book
     # - name: Build the book
