@@ -17,7 +17,7 @@ jobs:
   deploy-jupyter-book:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v2
 
     # Setup Python (faster than using Python container)
     - name: Setup Python 3.9
@@ -25,18 +25,21 @@ jobs:
       with:
         python-version: 3.9  
 
-    - name: Install pipenv
+     - name: Check python version
       run: |
-        python -m pip install --upgrade pipenv wheel
-    
-    - name: open pipenv shell
+        python -V
+        
+    - name: Install requirements
       run: |
-        pipenv shell
+        python -m pip install --upgrade pip
+        pip install pipenv
 
     - name: Install dependencies
       run: |
         pipenv install --deploy --dev
     
+    - name: check virtualenv
+        pip -V 
 
     # Build the book
     - name: Build the book
