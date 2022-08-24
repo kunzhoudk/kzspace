@@ -15,7 +15,7 @@ on:
 
 jobs: 
   # This job deploys the example book
-  deploy-example-book:
+  deploy-kuns-book:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -38,9 +38,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install pipenv
 
-    # - name: Install dependencies
-    #   run: |
-    #     pipenv install --deploy --dev
+    - name: Install dependencies
+      run: |
+        pipenv install --deploy --dev
     
     # # check virtual env
     # - name: check virtualenv
