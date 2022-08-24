@@ -1,4 +1,4 @@
-name: jupyter-book-pages
+name: deploy-juputer-book-pages
 
 # Only run this when the master branch changes
 on:
@@ -25,7 +25,7 @@ jobs:
       with:
         python-version: 3.9  
 
-     - name: Install dependencies with pipenv
+    - name: Install dependencies with pipenv
       run: |
         pip install pipenv
         pipenv install --deploy --dev
