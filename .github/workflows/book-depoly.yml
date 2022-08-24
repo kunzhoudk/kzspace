@@ -25,10 +25,10 @@ jobs:
       with:
         python-version: 3.9  
 
-    - name: Install dependencies with pipenv
+    - name: Install dependencies 
       run: |
-        pip install pipenv
-        pipenv install --deploy --dev
+        pip freeze > requirements.txt   
+        pip install -r requirements.txt
 
     # Build the book
     - name: Build the book
