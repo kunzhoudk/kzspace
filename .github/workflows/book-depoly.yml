@@ -14,7 +14,7 @@ on:
 
 # This job installs dependencies, builds the book, and pushes it to `gh-pages`
 jobs:
-  deploy-jupyter-book:
+  deploy-book:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -25,7 +25,7 @@ jobs:
       with:
         python-version: 3.9  
 
-     - name: Check python version
+    - name: Check python version
       run: |
         python -V
         
