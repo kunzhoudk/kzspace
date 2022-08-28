@@ -15,8 +15,10 @@ parts:
   - caption: Linear algebra
     chapters:
     - file: linear-algebra/Gaussian_Elimination
-  #   chapters:
-  #   - file: path/to/part2/chapter1
+  
+  - caption: Deep Learning
+    chapters:
+    - file: deep-learning/neurons_and_layers
   #   - file: path/to/part2/chapter2
 
 # chapters:
