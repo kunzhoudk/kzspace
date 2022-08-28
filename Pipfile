@@ -8,6 +8,7 @@ jupyter-book = "*"
 matplotlib = "*"
 numpy = "*"
 scipy = "*"
+tensorflow = "==2.9.1"
 
 [dev-packages]
 
