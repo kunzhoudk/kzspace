@@ -54,7 +54,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Content with notebooks" href="../notebooks.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -133,18 +132,6 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Linear algebra
- </span>
-</p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Gaussian Elimination
-  </a>
- </li>
-</ul>
 
     </div>
 </nav></div>
@@ -203,7 +190,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/kunzhoudk/kzspace/main?urlpath=lab/tree/linear-algebra/Gaussian_Elimination.ipynb"
+        <a href="https://mybinder.org/v2/gh/kunzhoudk/kzspace/main?urlpath=lab/tree/linear-algebra/gaussian-elimination.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -221,7 +208,7 @@ title="Launch on Binder"
       </li>
       
       <li>
-        <a href="https://colab.research.google.com/github/kunzhoudk/kzspace/blob/main/linear-algebra/Gaussian_Elimination.ipynb"
+        <a href="https://colab.research.google.com/github/kunzhoudk/kzspace/blob/main/linear-algebra/gaussian-elimination.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -299,7 +286,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/kunzhoudk/kzspace/issues/new?title=Issue%20on%20page%20%2Flinear-algebra/Gaussian_Elimination.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/kunzhoudk/kzspace/issues/new?title=Issue%20on%20page%20%2Flinear-algebra/gaussian-elimination.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -327,7 +314,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/linear-algebra/Gaussian_Elimination.ipynb"
+        <a href="../_sources/linear-algebra/gaussian-elimination.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -479,38 +466,38 @@ title="Print to PDF"
 <p>Let’s look at an example.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{eqnarray*}
+\begin{aligned}
 x_1 - x_2 + x_3 &amp; = &amp; 3\\
 2x_1 + x_2 + 8x_3 &amp; = &amp; 18\\
 4x_1 + 2x_2 -3x_3 &amp; = &amp; -2 
-\end{eqnarray*}
+\end{aligned}
 \end{split}\]</div>
 <p>We could swap the first and last equation,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{eqnarray*}
+\begin{aligned}
 4x_1 + 2x_2 -3x_3 &amp; = &amp; -2 \\
 2x_1 + x_2 + 8x_3 &amp; = &amp; 18\\
 x_1 - x_2 + x_3 &amp; = &amp; 3
-\end{eqnarray*}
+\end{aligned}
 \end{split}\]</div>
 <p>or we could multiply the first equation by <span class="math notranslate nohighlight">\(5\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{eqnarray*}
+\begin{aligned}
 5x_1 - 5x_2 + 5x_3 &amp; = &amp; 15\\
 2x_1 + x_2 + 8x_3 &amp; = &amp; 18\\
 4x_1 + 2x_2 -3x_3 &amp; = &amp; -2 
-\end{eqnarray*}
+\end{aligned}
 \end{split}\]</div>
 <p>or we could add 2 times the first equation to the last equation.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{eqnarray*}
+\begin{aligned}
 x_1 - x_2 + x_3 &amp; = &amp; 3\\
 2x_1 + x_2 + 3x_3 &amp; = &amp; 8\\
 6x_1 \quad\quad -x_3 &amp; = &amp; 4 
-\end{eqnarray*}
+\end{aligned}
 \end{split}\]</div>
 <p>The last operation is the most important because it allows us to <em>eliminate</em> a variable from one of the equations.  Note that the third equation no longer contains the <span class="math notranslate nohighlight">\(x_2\)</span> term.  This is the key to the elimination algorithm.</p>
 <p>For computational purposes we can dispense with the variable names and the “=” symbol, and arrange all of the actual numbers in an array.</p>
@@ -525,6 +512,17 @@ x_1 - x_2 + x_3 &amp; = &amp; 3\\
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">A</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">18</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">A</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">18</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">]])</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;numpy&#39;
 </pre></div>
 </div>
 </div>
@@ -695,9 +693,9 @@ x_3 &amp; = &amp; 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-4  6 -3  6]
- [-7  5  1  3]
- [ 3  3  2  5]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-1  2 -7  6]
+ [ 0 -3 -4  4]
+ [-7  6  6 -7]]
 </pre></div>
 </div>
 </div>
@@ -721,9 +719,9 @@ x_3 &amp; = &amp; 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 1.         -1.5         0.75       -1.5       ]
- [-0.          1.         -1.13636364  1.36363636]
- [ 0.          0.          1.         -0.08791209]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 1.          5.         -8.         -4.        ]
+ [-0.          1.         -0.45454545  0.18181818]
+ [-0.         -0.          1.          0.89411765]]
 </pre></div>
 </div>
 </div>
@@ -1032,13 +1030,6 @@ x_3 &amp; = &amp; 1\\
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../notebooks.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Content with notebooks</p>
-        </div>
-    </a>
 </div>
             </footer>
         </div>
