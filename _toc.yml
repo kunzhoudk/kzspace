@@ -19,7 +19,10 @@ parts:
   - caption: Deep Learning
     chapters:
     - file: deep-learning/neurons_and_layers
-  #   - file: path/to/part2/chapter2
+
+  - caption: Docker
+    chapters:
+    - file: docker/docker-notebook
 
 # chapters:
 # - file: markdown
