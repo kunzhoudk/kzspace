@@ -26,7 +26,7 @@ Images are either pre-built (e.g. official Images you find on DockerHub) or you 
 ### Key Docker Commands
 
 For a full list of all commands, add `--help` after a command - e.g. `docker --help` , `docker run --help` etc.
-Also view the official docs for a full, detailed documentation of ALL commands and features: https: //docs.docker.com/engine/reference/run/
+Also view the official docs for a full, detailed documentation of ALL commands and features: [https: //docs.docker.com/engine/reference/run/](https://docs.docker.com/engine/reference/run/)
 
 **Important**: This can be overwhelming! You'll only need a fraction of those features and commands in reality!
 
