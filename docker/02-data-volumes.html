@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Publications &#8212; Kun Zhou Space</title>
+    <title>Data &amp; Volumes &#8212; Kun Zhou Space</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Fourier Transforms" href="../deep-learning/fourier_transform.html" />
-    <link rel="prev" title="Short CV" href="cv.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -110,14 +108,14 @@ const thebe_selector_output = ".output, .cell_output"
   About me
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="cv.html">
+  <a class="reference internal" href="../about-me/cv.html">
    Short CV
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about-me/publications.html">
    Publications
   </a>
  </li>
@@ -233,7 +231,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/kunzhoudk/kzspace/issues/new?title=Issue%20on%20page%20%2Fabout-me/publications.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/kunzhoudk/kzspace/issues/new?title=Issue%20on%20page%20%2Fdocker/02-data-volumes.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -261,7 +259,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/about-me/publications.md"
+        <a href="../_sources/docker/02-data-volumes.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -321,18 +319,23 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#journal-papers">
-   Journal papers
+  <a class="reference internal nav-link" href="#volumes">
+   Volumes
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conference-proceedings">
-   Conference proceedings
+  <a class="reference internal nav-link" href="#removing-anonymous-volumes">
+   Removing Anonymous Volumes
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#patents">
-   Patents
+  <a class="reference internal nav-link" href="#bind-mounts">
+   Bind Mounts
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#key-docker-commands">
+   Key Docker Commands
   </a>
  </li>
 </ul>
@@ -344,7 +347,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Publications</h1>
+                <h1>Data & Volumes</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -355,18 +358,23 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#journal-papers">
-   Journal papers
+  <a class="reference internal nav-link" href="#volumes">
+   Volumes
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conference-proceedings">
-   Conference proceedings
+  <a class="reference internal nav-link" href="#removing-anonymous-volumes">
+   Removing Anonymous Volumes
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#patents">
-   Patents
+  <a class="reference internal nav-link" href="#bind-mounts">
+   Bind Mounts
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#key-docker-commands">
+   Key Docker Commands
   </a>
  </li>
 </ul>
@@ -379,46 +387,57 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="publications">
-<h1>Publications<a class="headerlink" href="#publications" title="Permalink to this headline">#</a></h1>
-<p>📗 : Published
-📕 : Under review</p>
-<section id="journal-papers">
-<h2>Journal papers<a class="headerlink" href="#journal-papers" title="Permalink to this headline">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="data-volumes">
+<h1>Data &amp; Volumes<a class="headerlink" href="#data-volumes" title="Permalink to this headline">#</a></h1>
+<p>Images are read-only - once they’re created, they can’t change, or you have to rebuild them to
+update them.
+<strong>Containers on the other hand can read and write</strong> - they add a thin “read-write layer” on top of the image. That means that they can make changes to the files and folders in the image without actually changing the image.
+But even with read-write Containers, <strong>two big problems</strong> occur in many applications using Docker:</p>
+<ol class="simple">
+<li><p><strong>Data written in a Container doesn’t persist</strong>: If the Container is stopped and removed, all data written in the Container is lost</p></li>
+<li><p><strong>The container can’t interact with the host filesystem</strong>: If you change something in your host project folder, those changes are not reflected in the running container. You need to rebuild the image (which copies the folders) and start a new container</p></li>
+</ol>
+<p>Problem 1 can be solved with a Docker feature called “Volumes”. Problem 2 can be solved by using “Bind Mounts”.</p>
+<section id="volumes">
+<h2>Volumes<a class="headerlink" href="#volumes" title="Permalink to this headline">#</a></h2>
+<p>Volumes are folders (and files) managed on your host machine which are <strong>connected</strong> to folders / files inside of a container. Changes in either folder / files will be reflected in the other one. Volumes persist if a container shuts down. If a container (re-)starts and mounts a volume, any data inside of that volume is available in the container. A container can write data into volume and read data from it. A defined path in the container is mapped to the created volume/mount. e.g. <em>/some-path</em> on your hosting machine is mapped to /<em>app/data</em> in the container. Docker sets up a <em>/some-path</em> on your host machine, exact location is unknown to you. You can manage it via <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">volume</span></code> commands.</p>
+<p>There are <strong>two types of Volumes</strong>:</p>
 <ul class="simple">
-<li><p>📗 Chen, Y., Li, G., Zhang, X., Jia, J., <strong>Zhou, K.</strong>, &amp; Wu, C. (2022). Identifying field and road modes of agricultural Machinery based on GNSS Recordings: A graph convolutional neural network approach. Computers and Electronics in Agriculture, 198, 107082.</p></li>
-<li><p>📗 Liang, Y., <strong>Zhou, K.</strong>, &amp; Wu, C. (2022). Environment scenario identification based on GNSS recordings for agricultural tractors. Computers and Electronics in Agriculture, 195, 106829.🚩[co-corresponding author]</p></li>
-<li><p>📗 Vahdanjoo, M., <strong>Zhou, K.</strong>, &amp; Sørensen, C. A. G. (2020). Route planning for agricultural machines with multiple depots: manure application case study. Agronomy, 10(10), 1608.🚩[co-first author]</p></li>
-<li><p>📗 Nilsson, R. S., &amp; <strong>Zhou, K</strong>. (2020). Method and bench-marking framework for coverage path planning in arable farming. Biosystems Engineering, 198, 248-265.</p></li>
-<li><p>📗 Nilsson, R. S., &amp; <strong>Zhou, K</strong>. (2020). Decision support tool for operational planning of field operations. Agronomy, 10(2), 229.</p></li>
-<li><p>📗 <strong>Zhou, K.</strong>, Jensen, A. L., Bochtis, D., Nørremark, M., Kateris, D., &amp; Sørensen, C. G. (2020). Metric map generation for autonomous field operations. Agronomy, 10(1), 83.</p></li>
-<li><p>📗 <strong>Zhou, K.</strong>, Bochtis, D., Jensen, A. L., Kateris, D., &amp; Sørensen, C. G. (2020). Introduction of a new index of field operations efficiency. Applied Sciences, 10(1), 329.</p></li>
-<li><p>📗 Rodias, E., Berruto, R., Busato, P., Bochtis, D., Sørensen, C. G., &amp;<strong>Zhou, K</strong> (2017). Energy savings from optimised in-field route planning for agricultural machinery. Sustainability, 9(11), 1956.</p></li>
-<li><p>📗  <strong>Zhou, K.</strong>, Jensen, A. L., Bochtis, D. D., &amp; Sørensen, C. G. (2015). Quantifying the benefits of alternative fieldwork patterns in a potato cultivation system. Computers and Electronics in Agriculture, 119, 228-240.</p></li>
-<li><p>📗  <strong>Zhou, K.</strong>, Jensen, A. L., Bochtis, D. D., &amp; Sørensen, C. G. (2015). Simulation model for the sequential in-field machinery operations in a potato production system. Computers and Electronics in Agriculture, 116, 173-186.</p></li>
-<li><p>📗 Bochtis, D., Griepentrog, H. W., Vougioukas, S., Busato, P., Berruto, R., &amp; <strong>Zhou, K</strong>. (2015). Route planning for orchard operations. Computers and electronics in agriculture, 113, 51-60.</p></li>
-<li><p>📗 <strong>Zhou, K.</strong>, Jensen, A. L., Bochtis, D., &amp; Sørensen, C. G. (2015). Performance of machinery in potato production in one growing season. Spanish journal of agricultural research, 13(4), 6.</p></li>
-<li><p>📗 <strong>Zhou, K.</strong>, Jensen, A. L., Sørensen, C. G., Busato, P., &amp; Bothtis, D. D. (2014). Agricultural operations planning in fields with multiple obstacle areas. Computers and electronics in agriculture, 109, 12-22.</p></li>
+<li><p>Anonymous Volumes: Created via -v /some/path/in/container and removed automatically when a container is removed because of <code class="docutils literal notranslate"><span class="pre">--rm</span></code> added on the docker run command. It is created specially for a single container and cannot be shared across containers. Since it is anonymous, it can’t be reused, even on same image.</p></li>
+<li><p>Named Volumes: Created via -v some-name:/some/path/in/container and NOT removed automatically. Greate for data which should be persistent but which you don’t need to edit directly. It is created in general - not tied to any specific container and can be shared across containers</p></li>
 </ul>
+<p>With Volumes, <strong>data can be passed into a container</strong> (if the folder on the host machine is not empty) and it can be saved when written by a container (changes made by the container are reflected on your host machine).</p>
+<p><strong>Volumes are created and managed by Docker</strong> - as a developer, you don’t necessarily know where exactly the folders are stored on your host machine. Because the data stored in there is <strong>not meant to be viewed or edited by you</strong> - use “Bind Mounts” if you need to do that!</p>
+<p>Instead, especially Named Volumes can help you with persisting data. Since data is not just written in the container but also on your host machine, the data survives even if a container is removed (because the Named Volume isn’t removed in that case). Hence, you can use Named Volumes to persist container data (e.g. log files, uploaded files, database files etc).</p>
+<p>Anonymous Volumes can be useful for ensuring that some Container-internal folder is <strong>not overwritten</strong> by a “Bind Mount” for example.</p>
+<p>By default, <strong>Anonymous Volumes are removed</strong> if the Container was started with the –rm option and was stopped thereafter. They are <strong>not removed</strong> if a Container was started (and then removed) without that option.</p>
+<p><strong>Named Volumes are never removed</strong>, you need to do that manually (via <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">volume</span> <span class="pre">rm</span> <span class="pre">VOL_NAME</span></code> , see reference below).</p>
 </section>
-<section id="conference-proceedings">
-<h2>Conference proceedings<a class="headerlink" href="#conference-proceedings" title="Permalink to this headline">#</a></h2>
-<ul class="simple">
-<li><p>📗 <strong>Zhou, K.</strong>, Bochtis, D. (2015, September). Route Planning For Capacitated Agricultural Machines Based On Ant Colony Algorithms. In HAICTA (pp. 163-173).</p></li>
-<li><p>📗 <strong>Zhou, K.</strong>, Zhou, K., Bothtis, D. D., Sørensen, C. G., (2016). An object-oriented simulation tool for grain harvesting. CIGR-AgEng Conference, 26-29 June 2016, Aarhus</p></li>
-<li><p>📗 Jensen, A., la Riviere, I. J., de Bruin, S., <strong>Zhou, K.</strong>, Jørgensen, M. S., Pedersen, H., Sørensen, C. G. (2018). An online DSS for optimisation of traffic in fields with controlled traffic farming (CTF). In CIGR 2018: XIX. World Congress of CIGR (Commission Internationale du Génie Rural) Program &amp; Abstracts’ Book: Sustainable Life for Children (pp. 154-154). CIGR.</p></li>
-<li><p>📗 <strong>Zhou, K.</strong>, Jensen, A. L., Bochtis, D., Sørensen, C. G. A Web–based Tool for Comparing Field Area Coverage Practices. CIOSTA XXXV Conference: CIGR V Conference, Billund, Denmark; 07/2013.</p></li>
-<li><p>📗 Gunnarsson, E. Rodias, J. Kusk, <strong>Zhou, K.</strong>. M. A. F. Jensen, D. D. Bochtis. Biomass crop allocation problem. International Commission of Agricultural and Biological Engineers, Section V. CIOSTA XXXV Conference “From Effective to Intelligent Agriculture and Forestry”, Billund, Denmark, 3-5 July 2013.</p></li>
-</ul>
+<section id="removing-anonymous-volumes">
+<h2>Removing Anonymous Volumes<a class="headerlink" href="#removing-anonymous-volumes" title="Permalink to this headline">#</a></h2>
+<p>We saw, that anonymous volumes are removed automatically, when a container is removed.</p>
+<p>This happens when you start / run a container with the <code class="docutils literal notranslate"><span class="pre">--rm</span></code> option.</p>
+<p>If you start a container <strong>without that option</strong>, the anonymous volume would <strong>NOT be removed</strong>, even if you remove the container (with <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">rm</span> <span class="pre">...</span></code> ).</p>
+<p>Still, if you then re-create and re-run the container (i.e. you run <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">...</span></code> again), <strong>a new anonymous volume will be created</strong>. So even though the anonymous volume wasn’t removed automatically, it’ll also <strong>not be helpful</strong> because a different anonymous volume is attached the next time the container starts (i.e. you removed the old container and run a new one).</p>
+<p>Now you just start <strong>piling up a bunch of unused anonymous volumes</strong> - you can <strong>clear them</strong> via <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">volume</span> <span class="pre">rm</span> <span class="pre">VOL_NAME</span></code> or <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">volume</span> <span class="pre">prune</span></code> .</p>
 </section>
-<section id="patents">
-<h2>Patents<a class="headerlink" href="#patents" title="Permalink to this headline">#</a></h2>
+<section id="bind-mounts">
+<h2>Bind Mounts<a class="headerlink" href="#bind-mounts" title="Permalink to this headline">#</a></h2>
+<p>Bind Mounts are very similiar to Volumes - the key difference is, that you, the developer, <strong>set the path on your host machine</strong> that should be connected to some path inside of a Container. You do that via -v/absolute/path/on/your/host/machine:/some/path/inside/of/container. The path in front of the : (i.e. the path on your host machine, to the folder that should be shared with the container) has to be an absolute path when using -v on the docker run command.</p>
+<p>Bind Mounts are very useful for <strong>sharing data with a Container</strong> which might change whilst the container is running - e.g. your source code that you want to share with the Container running your development environment.</p>
+<p><strong>Don’t use Bind Mounts if you just want to persist data</strong> - Named Volumes should be used for that (exception: You want to be able to inspect the data written during development). In general, Bind Mounts are a great tool during development - they’re not meant to be used in production (since you’re container should run isolated from it’s host machine).</p>
+</section>
+<section id="key-docker-commands">
+<h2>Key Docker Commands<a class="headerlink" href="#key-docker-commands" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p>📕 <strong>Zhou, K.</strong>, (2019). System And Method For Windrow Path Planning. U. S. Patent Application No. 202017135996. Washington, DC: U. S. Patent and Trademark Office.</p></li>
-<li><p>📕 <strong>Zhou, K.</strong>, System And Method For Windrow Path Planning. U. S. Patent Application No. 202017135990. Washington, DC: U. S. Patent and Trademark Office.</p></li>
-<li><p>📕 <strong>Zhou, K.</strong>, Nilsson, R. S., Kenneth, G. L. (2022). Operational path planning. G. B. Patent Application No. 202201115. Newport, South East Wales: Intellectual Property Office.</p></li>
-<li><p>📕 <strong>Zhou, K.</strong>, Nilsson, R. S., Kenneth, G. L. (2022). Operational path planning. G. B. Patent Application No. 202202445. Newport, South East Wales: Intellectual Property Office.</p></li>
-<li><p>📕 <strong>Zhou, K.</strong>, Nilsson, R. S., Kenneth, G. L. (2022). Wayline Generation for farming machine guidance. Patent Application No. Unkown yet. Washington, DC: U. S. Patent and Trademark Office.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-v</span> <span class="pre">/path/in/container</span> <span class="pre">IMAGE</span></code> : Create an <strong>Anonymous Volume</strong> inside a Container</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-v</span> <span class="pre">some-name:/path/in/container</span> <span class="pre">IMAGE</span></code> : Create a *<em>Named Volume</em> (named some-name) inside a Container</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-v</span> <span class="pre">/path/on/your/host/machine:path/in/container</span> <span class="pre">IMAGE</span></code>: Create a <strong>Bind Mount</strong> and connect a local path on your host machine to some path in the Container</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">volume</span> <span class="pre">ls</span></code> : List all currently active / stored Volumes (by all Containers)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">volume</span> <span class="pre">create</span> <span class="pre">VOL_NAME</span></code> : Create a new (Named) Volume named VOL_NAME. You
+typically don’t need to do that, since Docker creates them automatically for you if they don’t exist when running a container</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">volume</span> <span class="pre">rm</span> <span class="pre">VOL_NAME</span></code> : Remove a Volume by it’s name (or ID)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">volume</span> <span class="pre">prune</span></code> : <strong>Remove all unused Volumes</strong> (i.e. not connected to a currently running or stopped container)</p></li>
 </ul>
 </section>
 </section>
@@ -436,7 +455,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./about-me"
+            path: "./docker"
         },
         predefinedOutput: true
     }
@@ -450,20 +469,6 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="cv.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Short CV</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="../deep-learning/fourier_transform.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Fourier Transforms</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
 </div>
             </footer>
         </div>
