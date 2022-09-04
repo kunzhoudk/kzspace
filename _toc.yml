@@ -22,7 +22,8 @@ parts:
 
   - caption: Docker
     chapters:
-    - file: docker/docker-notebook
+    - file: docker/01-images-containers
+    - file: docker/02-data-volumes
 
 # chapters:
 # - file: markdown
