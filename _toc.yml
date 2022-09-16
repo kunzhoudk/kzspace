@@ -24,6 +24,7 @@ parts:
     chapters:
     - file: docker/01-images-containers
     - file: docker/02-data-volumes
+    - file: docker/03-networks-requests
 
 # chapters:
 # - file: markdown
