@@ -11,7 +11,10 @@ parts:
     - file: about-me/publications
     - file: deep-learning/fourier_transform
     - file: notebooks
-
+  - caption: Geometry
+    chapters:
+    - file: geometry/point-to-line-distance.md
+    
   - caption: Linear algebra
     chapters:
     - file: linear-algebra/Gaussian_Elimination
