@@ -44,5 +44,3 @@ $$
 $$
 
 So given a line of the form $ax + by + c$ and a point $(x_{0},y_{0})$, the perpendicular distance can be found by the above formula.
-
-
