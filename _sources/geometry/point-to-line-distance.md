@@ -1,7 +1,7 @@
 # Distance from a point to a line
 The distance between a point and a line, is defined as the shortest distance between a fixed point and any point on the line. It is the length of the line segment that is perpendicular to the line and passes through the poin.
 
-<div style="text-align:center"><img src="/geometry/images/Vectorpoint-to-line.png" /></div>
+<div style="text-align:center"><img src="./images/Vectorpoint-to-line.png" /></div>
 
 Let $P$ be the point with coordinates $(x_{0}, y_{0})$ and let the given line have equation $ax + by + c = 0$. Also, let $Q = (x_{1}, y_{1})$ be any point on this line and $n$ the vector $(a, b)$ starting at point $Q$. The vector $n$ is perpendicular to the line, and the distance $d$ from point $P$ to the line is equal to the length of the orthogonal projection of $\overrightarrow{QP}$ on $n$. Thus we have from trigonometry:
 
