@@ -13,7 +13,7 @@ parts:
     - file: notebooks
   - caption: Geometry
     chapters:
-    - file: geometry/point-to-line-distance.md
+    - file: geometry/point-to-line-distance
     
   - caption: Linear algebra
     chapters:
