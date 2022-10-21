@@ -15,7 +15,7 @@ $$
 d= \frac{\lVert \overrightarrow{QP} \rVert \lVert \overrightarrow{n} \rVert cos\theta }{\lVert \overrightarrow{n} \rVert}
 $$
 
-we know from the definition of dot product that $\lVert \overrightarrow{QP} \rVert \lVert \overrightarrow{n} \rVert cos\theta $ ust means the dot product of the vector $\overrightarrow{QP}$ and the normal vector  $\overrightarrow{n}$:
+we know from the definition of dot product that $\lVert \overrightarrow{QP} \rVert \lVert \overrightarrow{n} \rVert cos\theta $ just means the dot product of the vector $\overrightarrow{QP}$ and the normal vector  $\overrightarrow{n}$:
 
 $$
 d= \frac{ \overrightarrow{QP} \cdot \overrightarrow{n}  }{\lVert \overrightarrow{n} \rVert}
