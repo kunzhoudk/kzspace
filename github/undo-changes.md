@@ -62,3 +62,5 @@ If you have made local commits that you don't like, and they have not been pushe
    - `git reset 2f5451f`
    - `git reset --hard 2f5451f`
    - NOTE: If you do `git reset` the commits will be removed, but the changes will appear as uncommitted, giving you access to the code. This is the safest option, because maybe you wanted some of that code and you can now make changes and new commits that are good. Often though you'll want to undo the commits and through away the code, which is what `git reset --hard` does.
+
+**Resources**: https://www.nobledesktop.com/learn/git/undo-changes
