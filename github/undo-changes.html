@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Data &amp; Volumes &#8212; Kun Zhou Space</title>
+    <title>Undo Changes in Git: git checkout, git revert, &amp; git reset &#8212; Kun Zhou Space</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Networks &amp; Requests" href="03-networks-requests.html" />
-    <link rel="prev" title="Images &amp; Containers" href="01-images-containers.html" />
+    <link rel="prev" title="Networks &amp; Requests" href="../docker/03-networks-requests.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -161,19 +160,19 @@ const thebe_selector_output = ".output, .cell_output"
   Docker
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="01-images-containers.html">
+  <a class="reference internal" href="../docker/01-images-containers.html">
    Images &amp; Containers
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../docker/02-data-volumes.html">
    Data &amp; Volumes
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="03-networks-requests.html">
+  <a class="reference internal" href="../docker/03-networks-requests.html">
    Networks &amp; Requests
   </a>
  </li>
@@ -183,9 +182,9 @@ const thebe_selector_output = ".output, .cell_output"
   Github
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../github/undo-changes.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Undo Changes in Git: git checkout, git revert, &amp; git reset
   </a>
  </li>
@@ -279,7 +278,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/kunzhoudk/kzspace/issues/new?title=Issue%20on%20page%20%2Fdocker/02-data-volumes.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/kunzhoudk/kzspace/issues/new?title=Issue%20on%20page%20%2Fgithub/undo-changes.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -307,7 +306,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/docker/02-data-volumes.md"
+        <a href="../_sources/github/undo-changes.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -367,23 +366,23 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#volumes">
-   Volumes
+  <a class="reference internal nav-link" href="#undoing-local-changes-that-have-not-been-committed">
+   Undoing Local Changes That Have Not Been Committed
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#removing-anonymous-volumes">
-   Removing Anonymous Volumes
+  <a class="reference internal nav-link" href="#undoing-a-specific-commit-that-has-been-pushed">
+   Undoing a Specific Commit (That Has Been Pushed)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bind-mounts">
-   Bind Mounts
+  <a class="reference internal nav-link" href="#undoing-your-last-commit-that-has-not-been-pushed">
+   Undoing Your Last Commit (That Has Not Been Pushed)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#key-docker-commands">
-   Key Docker Commands
+  <a class="reference internal nav-link" href="#undoing-local-changes-that-have-been-committed-but-not-pushed">
+   Undoing Local Changes That Have Been Committed (But Not Pushed)
   </a>
  </li>
 </ul>
@@ -395,7 +394,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Data & Volumes</h1>
+                <h1>Undo Changes in Git: git checkout, git revert, & git reset</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -406,23 +405,23 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#volumes">
-   Volumes
+  <a class="reference internal nav-link" href="#undoing-local-changes-that-have-not-been-committed">
+   Undoing Local Changes That Have Not Been Committed
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#removing-anonymous-volumes">
-   Removing Anonymous Volumes
+  <a class="reference internal nav-link" href="#undoing-a-specific-commit-that-has-been-pushed">
+   Undoing a Specific Commit (That Has Been Pushed)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bind-mounts">
-   Bind Mounts
+  <a class="reference internal nav-link" href="#undoing-your-last-commit-that-has-not-been-pushed">
+   Undoing Your Last Commit (That Has Not Been Pushed)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#key-docker-commands">
-   Key Docker Commands
+  <a class="reference internal nav-link" href="#undoing-local-changes-that-have-been-committed-but-not-pushed">
+   Undoing Local Changes That Have Been Committed (But Not Pushed)
   </a>
  </li>
 </ul>
@@ -435,58 +434,83 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="data-volumes">
-<h1>Data &amp; Volumes<a class="headerlink" href="#data-volumes" title="Permalink to this headline">#</a></h1>
-<p>Images are read-only - once they’re created, they can’t change, or you have to rebuild them to
-update them.
-<strong>Containers on the other hand can read and write</strong> - they add a thin “read-write layer” on top of the image. That means that they can make changes to the files and folders in the image without actually changing the image.
-But even with read-write Containers, <strong>two big problems</strong> occur in many applications using Docker:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="undo-changes-in-git-git-checkout-git-revert-git-reset">
+<h1>Undo Changes in Git: git checkout, git revert, &amp; git reset<a class="headerlink" href="#undo-changes-in-git-git-checkout-git-revert-git-reset" title="Permalink to this headline">#</a></h1>
+<section id="undoing-local-changes-that-have-not-been-committed">
+<h2>Undoing Local Changes That Have Not Been Committed<a class="headerlink" href="#undoing-local-changes-that-have-not-been-committed" title="Permalink to this headline">#</a></h2>
+<p>If you have made changes that you don’t like, and they <strong>have not been committed yet</strong>, do as follows:</p>
 <ol class="simple">
-<li><p><strong>Data written in a Container doesn’t persist</strong>: If the Container is stopped and removed, all data written in the Container is lost</p></li>
-<li><p><strong>The container can’t interact with the host filesystem</strong>: If you change something in your host project folder, those changes are not reflected in the running container. You need to rebuild the image (which copies the folders) and start a new container</p></li>
+<li><p>In your terminal (Terminal, Git Bash, or Windows Command Prompt), navigate to the folder for your Git repo.</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> and you should see the affected file listed.</p></li>
+<li><p>Run the following command, replacing filename.html with your file path (which you could copy and paste from the git status command):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">filename</span></code> to undo changes for a specfic file or <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">.</span></code> to undo all local changes for all files.</p></li>
+</ul>
+</li>
+<li><p>That file has now been reverted to the way it was at the previous commit (before your changes).</p></li>
 </ol>
-<p>Problem 1 can be solved with a Docker feature called “Volumes”. Problem 2 can be solved by using “Bind Mounts”.</p>
-<section id="volumes">
-<h2>Volumes<a class="headerlink" href="#volumes" title="Permalink to this headline">#</a></h2>
-<p>Volumes are folders (and files) managed on your host machine which are <strong>connected</strong> to folders / files inside of a container. Changes in either folder / files will be reflected in the other one. Volumes persist if a container shuts down. If a container (re-)starts and mounts a volume, any data inside of that volume is available in the container. A container can write data into volume and read data from it. A defined path in the container is mapped to the created volume/mount. e.g. <em>/some-path</em> on your hosting machine is mapped to /<em>app/data</em> in the container. Docker sets up a <em>/some-path</em> on your host machine, exact location is unknown to you. You can manage it via <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">volume</span></code> commands.</p>
-<p>There are <strong>two types of Volumes</strong>:</p>
+</section>
+<section id="undoing-a-specific-commit-that-has-been-pushed">
+<h2>Undoing a Specific Commit (That Has Been Pushed)<a class="headerlink" href="#undoing-a-specific-commit-that-has-been-pushed" title="Permalink to this headline">#</a></h2>
+<p>If you have one specific commit you want to undo, you can revert it as follows:</p>
+<ol class="simple">
+<li><p>In your terminal , navigate to the folder for your Git repo.</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> and make sure you have a clean working tree.</p></li>
+<li><p>Each commit has a unique hash (which looks something like 2f5451f). You need to find the hash for the commit you want to undo. Here are two places you can see the hash for commits:</p>
 <ul class="simple">
-<li><p>Anonymous Volumes: Created via -v /some/path/in/container and removed automatically when a container is removed because of <code class="docutils literal notranslate"><span class="pre">--rm</span></code> added on the docker run command. It is created specially for a single container and cannot be shared across containers. Since it is anonymous, it can’t be reused, even on same image.</p></li>
-<li><p>Named Volumes: Created via -v some-name:/some/path/in/container and NOT removed automatically. Greate for data which should be persistent but which you don’t need to edit directly. It is created in general - not tied to any specific container and can be shared across containers</p></li>
+<li><p>In the commit history on the GitHub or Bitbucket or website.</p></li>
+<li><p>In your terminal (Terminal, Git Bash, or Windows Command Prompt) run the command <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span> <span class="pre">--oneline</span></code></p></li>
 </ul>
-<p>With Volumes, <strong>data can be passed into a container</strong> (if the folder on the host machine is not empty) and it can be saved when written by a container (changes made by the container are reflected on your host machine).</p>
-<p><strong>Volumes are created and managed by Docker</strong> - as a developer, you don’t necessarily know where exactly the folders are stored on your host machine. Because the data stored in there is <strong>not meant to be viewed or edited by you</strong> - use “Bind Mounts” if you need to do that!</p>
-<p>Instead, especially Named Volumes can help you with persisting data. Since data is not just written in the container but also on your host machine, the data survives even if a container is removed (because the Named Volume isn’t removed in that case). Hence, you can use Named Volumes to persist container data (e.g. log files, uploaded files, database files etc).</p>
-<p>Anonymous Volumes can be useful for ensuring that some Container-internal folder is <strong>not overwritten</strong> by a “Bind Mount” for example.</p>
-<p>By default, <strong>Anonymous Volumes are removed</strong> if the Container was started with the –rm option and was stopped thereafter. They are <strong>not removed</strong> if a Container was started (and then removed) without that option.</p>
-<p><strong>Named Volumes are never removed</strong>, you need to do that manually (via <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">volume</span> <span class="pre">rm</span> <span class="pre">VOL_NAME</span></code> , see reference below).</p>
-</section>
-<section id="removing-anonymous-volumes">
-<h2>Removing Anonymous Volumes<a class="headerlink" href="#removing-anonymous-volumes" title="Permalink to this headline">#</a></h2>
-<p>We saw, that anonymous volumes are removed automatically, when a container is removed.</p>
-<p>This happens when you start / run a container with the <code class="docutils literal notranslate"><span class="pre">--rm</span></code> option.</p>
-<p>If you start a container <strong>without that option</strong>, the anonymous volume would <strong>NOT be removed</strong>, even if you remove the container (with <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">rm</span> <span class="pre">...</span></code> ).</p>
-<p>Still, if you then re-create and re-run the container (i.e. you run <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">...</span></code> again), <strong>a new anonymous volume will be created</strong>. So even though the anonymous volume wasn’t removed automatically, it’ll also <strong>not be helpful</strong> because a different anonymous volume is attached the next time the container starts (i.e. you removed the old container and run a new one).</p>
-<p>Now you just start <strong>piling up a bunch of unused anonymous volumes</strong> - you can <strong>clear them</strong> via <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">volume</span> <span class="pre">rm</span> <span class="pre">VOL_NAME</span></code> or <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">volume</span> <span class="pre">prune</span></code> .</p>
-</section>
-<section id="bind-mounts">
-<h2>Bind Mounts<a class="headerlink" href="#bind-mounts" title="Permalink to this headline">#</a></h2>
-<p>Bind Mounts are very similiar to Volumes - the key difference is, that you, the developer, <strong>set the path on your host machine</strong> that should be connected to some path inside of a Container. You do that via -v/absolute/path/on/your/host/machine:/some/path/inside/of/container. The path in front of the : (i.e. the path on your host machine, to the folder that should be shared with the container) has to be an absolute path when using -v on the docker run command.</p>
-<p>Bind Mounts are very useful for <strong>sharing data with a Container</strong> which might change whilst the container is running - e.g. your source code that you want to share with the Container running your development environment.</p>
-<p><strong>Don’t use Bind Mounts if you just want to persist data</strong> - Named Volumes should be used for that (exception: You want to be able to inspect the data written during development). In general, Bind Mounts are a great tool during development - they’re not meant to be used in production (since you’re container should run isolated from it’s host machine).</p>
-</section>
-<section id="key-docker-commands">
-<h2>Key Docker Commands<a class="headerlink" href="#key-docker-commands" title="Permalink to this headline">#</a></h2>
+</li>
+<li><p>Once you know the hash for the commit you want to undo, run the following command (replacing <code class="docutils literal notranslate"><span class="pre">2f5451f</span></code> with your commit’s hash):</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-v</span> <span class="pre">/path/in/container</span> <span class="pre">IMAGE</span></code> : Create an <strong>Anonymous Volume</strong> inside a Container</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-v</span> <span class="pre">some-name:/path/in/container</span> <span class="pre">IMAGE</span></code> : Create a *<em>Named Volume</em> (named some-name) inside a Container</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-v</span> <span class="pre">/path/on/your/host/machine:path/in/container</span> <span class="pre">IMAGE</span></code>: Create a <strong>Bind Mount</strong> and connect a local path on your host machine to some path in the Container</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">volume</span> <span class="pre">ls</span></code> : List all currently active / stored Volumes (by all Containers)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">volume</span> <span class="pre">create</span> <span class="pre">VOL_NAME</span></code> : Create a new (Named) Volume named VOL_NAME. You
-typically don’t need to do that, since Docker creates them automatically for you if they don’t exist when running a container</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">volume</span> <span class="pre">rm</span> <span class="pre">VOL_NAME</span></code> : Remove a Volume by it’s name (or ID)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">volume</span> <span class="pre">prune</span></code> : <strong>Remove all unused Volumes</strong> (i.e. not connected to a currently running or stopped container)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">revert</span> <span class="pre">2f5451f</span> <span class="pre">--no-edit</span></code></p></li>
+<li><p>NOTE: The <code class="docutils literal notranslate"><span class="pre">--no-edit</span></code> option prevents git from asking you to enter in a commit message. If you don’t add that option, you’ll end up in the  text editor.</p></li>
 </ul>
+</li>
+<li><p>This will make a new commit that is the opposite of the existing commit, reverting the file(s) to their previous state as if it was never changed.</p></li>
+<li><p>If working with a remote repo, you can now push those changes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code></p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="undoing-your-last-commit-that-has-not-been-pushed">
+<h2>Undoing Your Last Commit (That Has Not Been Pushed)<a class="headerlink" href="#undoing-your-last-commit-that-has-not-been-pushed" title="Permalink to this headline">#</a></h2>
+<p>If you made a mistake on your last commit and have not pushed yet, you can undo it. For example, maybe you added some files and made a commit, and then immediately realized you forgot something. You can undo the commit, and then make a new (correct) commit. This will keep your history cleaner.</p>
+<ol class="simple">
+<li><p>In your terminal, navigate to the folder for your Git repo.</p></li>
+<li><p>Run this command:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">reset</span> <span class="pre">--soft</span> <span class="pre">HEAD~</span></code></p></li>
+<li><p>TIP: Add a number to the end to undo multiple commits. For example, to undo the last 2 commits (assuming both have not been pushed) run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">reset</span> <span class="pre">--soft</span> <span class="pre">HEAD~2</span></code></p></li>
+<li><p>NOTE: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">reset</span> <span class="pre">--soft</span> <span class="pre">HEAD~</span></code> is the same as <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">reset</span> <span class="pre">--soft</span> <span class="pre">HEAD^</span></code> which you may see in Git documentation.</p></li>
+</ul>
+</li>
+<li><p>Your latest commit will now be undone. Your changes remain in place, and the files go back to being staged (e.g. with git add) so you can make any additional changes or add any missing files. You can then make a new commit.</p></li>
+</ol>
+</section>
+<section id="undoing-local-changes-that-have-been-committed-but-not-pushed">
+<h2>Undoing Local Changes That Have Been Committed (But Not Pushed)<a class="headerlink" href="#undoing-local-changes-that-have-been-committed-but-not-pushed" title="Permalink to this headline">#</a></h2>
+<p>If you have made local commits that you don’t like, and they have not been pushed yet you can reset things back to a previous good commit. It will be as if the bad commits never happened. Here’s how:</p>
+<ol class="simple">
+<li><p>In your terminal, navigate to the folder for your Git repo.</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> and make sure you have a clean working tree.</p></li>
+<li><p>Each commit has a unique hash (which looks something like <code class="docutils literal notranslate"><span class="pre">2f5451f</span></code>). You need to find the hash for the last good commit (the one you want to revert back to). Here are two places you can see the hash for commits:</p>
+<ul class="simple">
+<li><p>In the commit history on the GitHub or Bitbucket or website.</p></li>
+<li><p>In your terminal (Terminal, Git Bash, or Windows Command Prompt) run the command git log –oneline</p></li>
+</ul>
+</li>
+<li><p>Once you know the hash for the last good commit (the one you want to revert back to), run the following command (replacing <code class="docutils literal notranslate"><span class="pre">2f5451f</span></code> with your commit’s hash):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">reset</span> <span class="pre">2f5451f</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">reset</span> <span class="pre">--hard</span> <span class="pre">2f5451f</span></code></p></li>
+<li><p>NOTE: If you do <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">reset</span></code> the commits will be removed, but the changes will appear as uncommitted, giving you access to the code. This is the safest option, because maybe you wanted some of that code and you can now make changes and new commits that are good. Often though you’ll want to undo the commits and through away the code, which is what <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">reset</span> <span class="pre">--hard</span></code> does.</p></li>
+</ul>
+</li>
+</ol>
 </section>
 </section>
 
@@ -503,7 +527,7 @@ typically don’t need to do that, since Docker creates them automatically for y
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./docker"
+            path: "./github"
         },
         predefinedOutput: true
     }
@@ -517,19 +541,12 @@ typically don’t need to do that, since Docker creates them automatically for y
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="01-images-containers.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../docker/03-networks-requests.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Images &amp; Containers</p>
+            <p class="prev-next-title">Networks &amp; Requests</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="03-networks-requests.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Networks &amp; Requests</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>
