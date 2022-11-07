@@ -9,8 +9,8 @@ parts:
     chapters:
     - file: about-me/cv
     - file: about-me/publications
-    - file: deep-learning/fourier_transform
-    - file: notebooks
+    # - file: deep-learning/fourier_transform
+    # - file: notebooks
   - caption: Geometry
     chapters:
     - file: geometry/point-to-line-distance
