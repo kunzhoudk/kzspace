@@ -5,10 +5,10 @@ The distance between a point and a line, is defined as the shortest distance bet
 
 ```{figure} ./images/vector_point_to_line.png
 ---
-scale: 50%
+scale: 100%
 align: center
 ---
-Distance from a point to a line using projection!
+Fig.1 Distance from a point to a line using projection!
 ```
 
 Let $P$ be the point with coordinates $(x_{0}, y_{0})$ and let the given line have equation $ax + by + c = 0$. Also, let $Q = (x_{1}, y_{1})$ be any point on this line and $n$ the vector $(a, b)$ starting at point $Q$. The vector $n$ is perpendicular to the line, and the distance $d$ from point $P$ to the line is equal to the length of the orthogonal projection of $\overrightarrow{QP}$ on $n$. Thus we have from trigonometry:
