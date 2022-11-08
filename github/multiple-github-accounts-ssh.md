@@ -92,3 +92,7 @@ Check whether the URL matches our GitHub host to be used, otherwise update the r
 ```git
 git remote set-url origin git@github.com-worker:OperationsManagement/ora.git
 ```
+
+**Sources**
+* https://www.freecodecamp.org/news/manage-multiple-github-accounts-the-ssh-way-2dadc30ccaca/
+* https://jeffbrown.tech/multiple-github-accounts-ssh/
