@@ -26,7 +26,7 @@ If you have one specific commit you want to undo, you can revert it as follows:
 
 4. Once you know the hash for the commit you want to undo, run the following command (replacing `2f5451f` with your commit's hash):
     - `git revert 2f5451f --no-edit`
-    - NOTE: The `--no-edit` option prevents git from asking you to enter in a commit message. If you don't add that option, you'll end up in the  text editor.
+    > NOTE: The `--no-edit` option prevents git from asking you to enter in a commit message. If you don't add that option, you'll end up in the  text editor.
 
 5. This will make a new commit that is the opposite of the existing commit, reverting the file(s) to their previous state as if it was never changed.
 
@@ -61,6 +61,6 @@ If you have made local commits that you don't like, and they have not been pushe
 4. Once you know the hash for the last good commit (the one you want to revert back to), run the following command (replacing `2f5451f` with your commit's hash):
    - `git reset 2f5451f`
    - `git reset --hard 2f5451f`
-   - NOTE: If you do `git reset` the commits will be removed, but the changes will appear as uncommitted, giving you access to the code. This is the safest option, because maybe you wanted some of that code and you can now make changes and new commits that are good. Often though you'll want to undo the commits and through away the code, which is what `git reset --hard` does.
+   > NOTE: If you do `git reset` the commits will be removed, but the changes will appear as uncommitted, giving you access to the code. This is the safest option, because maybe you wanted some of that code and you can now make changes and new commits that are good. Often though you'll want to undo the commits and through away the code, which is what `git reset --hard` does.
 
 **Resources**: https://www.nobledesktop.com/learn/git/undo-changes

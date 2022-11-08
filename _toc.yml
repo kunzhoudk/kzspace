@@ -30,6 +30,7 @@ parts:
     - file: docker/03-networks-requests
   - caption: Github
     chapters:
+    - file: github/multiple-github-accounts-ssh
     - file: github/undo-changes
 # chapters:
 # - file: markdown
