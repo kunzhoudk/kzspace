@@ -1,0 +1,626 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Using Multiple GitHub Accounts and SSH Keys &#8212; Kun Zhou Space</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Undo Changes in Git: git checkout, git revert, &amp; git reset" href="undo-changes.html" />
+    <link rel="prev" title="Networks &amp; Requests" href="../docker/03-networks-requests.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo_normal_distribution.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Kun Zhou Space</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  About me
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about-me/cv.html">
+   Short CV
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about-me/publications.html">
+   Publications
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Geometry
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../geometry/point-to-line-distance.html">
+   Distance from a point to a line
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Deep Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../deep-learning/neurons_and_layers.html">
+   Optional Lab - Neurons and Layers
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Docker
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../docker/01-images-containers.html">
+   Images &amp; Containers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../docker/02-data-volumes.html">
+   Data &amp; Volumes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../docker/03-networks-requests.html">
+   Networks &amp; Requests
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Github
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Using Multiple GitHub Accounts and SSH Keys
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="undo-changes.html">
+   Undo Changes in Git: git checkout, git revert, &amp; git reset
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/kunzhoudk/kzspace"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/kunzhoudk/kzspace/issues/new?title=Issue%20on%20page%20%2Fgithub/multiple-github-accounts-ssh.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/github/multiple-github-accounts-ssh.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generate-ssh-keys">
+   1 - Generate SSH keys
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#generate-ssh-key-for-work-account">
+     1.1 Generate SSH key for work account
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adding-the-new-ssh-key-to-the-corresponding-github-account">
+   2 - Adding the new SSH key to the corresponding GitHub account
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#registering-the-new-ssh-keys-with-the-ssh-agent">
+   3 - Registering the new SSH Keys with the ssh-agent
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-the-ssh-config-file">
+   4 - Creating the SSH config File
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#while-cloning-repositories">
+   5 - While Cloning Repositories
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#for-locally-existing-repositories">
+   6 - For Locally Existing Repositories
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Using Multiple GitHub Accounts and SSH Keys</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generate-ssh-keys">
+   1 - Generate SSH keys
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#generate-ssh-key-for-work-account">
+     1.1 Generate SSH key for work account
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adding-the-new-ssh-key-to-the-corresponding-github-account">
+   2 - Adding the new SSH key to the corresponding GitHub account
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#registering-the-new-ssh-keys-with-the-ssh-agent">
+   3 - Registering the new SSH Keys with the ssh-agent
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-the-ssh-config-file">
+   4 - Creating the SSH config File
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#while-cloning-repositories">
+   5 - While Cloning Repositories
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#for-locally-existing-repositories">
+   6 - For Locally Existing Repositories
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="using-multiple-github-accounts-and-ssh-keys">
+<h1>Using Multiple GitHub Accounts and SSH Keys<a class="headerlink" href="#using-multiple-github-accounts-and-ssh-keys" title="Permalink to this headline">#</a></h1>
+<p>Creating an SSH key is an excellent authentication method when working with GitHub. However, sometimes you need to work with multiple GitHub accounts on the same system, like a work account and a personal account. To accomplish this, you can create multiple SSH keys and associate each one with different GitHub accounts. In this tutorial, you will learn how to configure and manage these multiple accounts and SSH keys for authenticating with multiple GitHub accounts.</p>
+<section id="generate-ssh-keys">
+<h2>1 - Generate SSH keys<a class="headerlink" href="#generate-ssh-keys" title="Permalink to this headline">#</a></h2>
+<p>Before generating an SSH key, we can check if we have any existing SSH keys: <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-al</span> <span class="pre">~/.ssh</span></code> , which will list out all existing public and private key pairs, if any.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">~/.ssh/id_rsa</span></code> is available, we can reuse it, or else we can first generate a key to the default <code class="docutils literal notranslate"><span class="pre">~/.ssh/id_rsa</span></code> by running:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ssh-keygen</span> <span class="pre">-t</span> <span class="pre">rsa</span></code></p></li>
+</ul>
+<p>When asked for the location to save the keys, accept the default location by <strong>pressing enter</strong>. A private key and public key <code class="docutils literal notranslate"><span class="pre">~/.ssh/id_rsa.pub</span></code> will be created at the default ssh location <code class="docutils literal notranslate"><span class="pre">~/.ssh/</span></code>. Let’s use this default key pair for our personal account.</p>
+<section id="generate-ssh-key-for-work-account">
+<h3>1.1 Generate SSH key for work account<a class="headerlink" href="#generate-ssh-key-for-work-account" title="Permalink to this headline">#</a></h3>
+<p>For the work accounts, we will create different SSH keys using:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">ssh-keygen</span> <span class="pre">-t</span> <span class="pre">rsa</span> <span class="pre">-C</span> <span class="pre">&quot;email&#64;work_mail.com&quot;</span> <span class="pre">-f</span> <span class="pre">&quot;id_rsa_work&quot;</span></code>
+which will generate the SSH keys, and saves the public key with the tag “<em>email&#64;work_mail.com</em>” to <code class="docutils literal notranslate"><span class="pre">~/.ssh/id_rsa_work_.pub</span></code></p></li>
+</ul>
+</section>
+</section>
+<section id="adding-the-new-ssh-key-to-the-corresponding-github-account">
+<h2>2 - Adding the new SSH key to the corresponding GitHub account<a class="headerlink" href="#adding-the-new-ssh-key-to-the-corresponding-github-account" title="Permalink to this headline">#</a></h2>
+<p>We already have the SSH public keys ready, and we will ask our GitHub accounts to trust the keys we have created. This is to get rid of the need for typing in the username and password every time you make a Git push.</p>
+<p>Copy the public key <code class="docutils literal notranslate"><span class="pre">pbcopy</span> <span class="pre">&lt;</span> <span class="pre">~/.ssh/id_rsa.pub</span></code> and then log in to your personal GitHub account:</p>
+<ul class="simple">
+<li><p>Go to <strong>Settings</strong></p></li>
+<li><p>Select <strong>SSH and GPG keys</strong> from the menu to the left.</p></li>
+<li><p>Click on <strong>New SSH key</strong>, provide a suitable title, and paste the key in the box below.</p></li>
+<li><p>Click <strong>Add key</strong> and you’re done!</p></li>
+</ul>
+</section>
+<section id="registering-the-new-ssh-keys-with-the-ssh-agent">
+<h2>3 - Registering the new SSH Keys with the ssh-agent<a class="headerlink" href="#registering-the-new-ssh-keys-with-the-ssh-agent" title="Permalink to this headline">#</a></h2>
+<p>To use the keys, we have to register them with the ssh-agent on our machine. Ensure ssh-agent is running using the command <code class="docutils literal notranslate"><span class="pre">eval</span> <span class="pre">&quot;$(ssh-agent</span> <span class="pre">-s)&quot;</span></code>. Add the keys to the ssh-agent like so:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ssh-add</span> <span class="pre">~/.ssh/id_rsa</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ssh-add</span> <span class="pre">~/.ssh/id_rsa_work</span></code></p></li>
+</ul>
+</section>
+<section id="creating-the-ssh-config-file">
+<h2>4 - Creating the SSH config File<a class="headerlink" href="#creating-the-ssh-config-file" title="Permalink to this headline">#</a></h2>
+<p>Here we are actually adding the SSH configuration rules for different hosts, stating which identity file to use for which domain.</p>
+<p>The SSH config file will be available at <code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code>. Edit it if it exists, or else we can just create it.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd ~/.ssh/
+$ touch config           // Creates the file if not exists
+$ code config            // Opens the file in VS code, use any editor
+</pre></div>
+</div>
+<p>Make configuration entries for the relevant GitHub accounts similar to the one below in your <code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code> file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Personal account, - the default config</span>
+<span class="n">Host</span> <span class="n">github</span><span class="o">.</span><span class="n">com</span>        <span class="o">//</span> <span class="n">can</span> <span class="n">be</span> <span class="n">also</span> <span class="ow">in</span> <span class="nb">any</span> <span class="n">name</span><span class="p">,</span> <span class="n">like</span> <span class="s2">&quot;kunzhou&quot;</span>
+   <span class="n">HostName</span> <span class="n">github</span><span class="o">.</span><span class="n">com</span>
+   <span class="n">User</span> <span class="n">git</span>
+   <span class="n">IdentityFile</span> <span class="o">~/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_rsa</span>
+   
+<span class="c1"># Work account-1</span>
+<span class="n">Host</span> <span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">-</span><span class="n">work</span>    <span class="o">//</span> <span class="n">can</span> <span class="n">be</span> <span class="n">also</span> <span class="ow">in</span> <span class="nb">any</span> <span class="n">name</span><span class="p">,</span> <span class="n">like</span> <span class="s2">&quot;agco&quot;</span> 
+   <span class="n">HostName</span> <span class="n">github</span><span class="o">.</span><span class="n">com</span>
+   <span class="n">User</span> <span class="n">git</span>
+   <span class="n">IdentityFile</span> <span class="o">~/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_rsa_work_user1</span>
+</pre></div>
+</div>
+<p><strong>“work”</strong> is the GitHub user id for the work account. <strong>“github.com-work”</strong> is a notation used to differentiate the multiple Git accounts. You can also use any name, such as you company name “agco” notation as well. Make sure you’re consistent with what hostname notation you use. This is relevant when you clone a repository or when you set the remote origin for a local repository.</p>
+<p>The above configuration asks ssh-agent to:</p>
+<ul class="simple">
+<li><p>Use <strong>id_rsa</strong> as the key for any Git URL that uses <strong>&#64;github.com</strong></p></li>
+<li><p>Use the <strong>id_rsa_work</strong> key for any Git URL that uses <strong>&#64;github.com-work</strong></p></li>
+</ul>
+</section>
+<section id="while-cloning-repositories">
+<h2>5 - While Cloning Repositories<a class="headerlink" href="#while-cloning-repositories" title="Permalink to this headline">#</a></h2>
+<p>Note: step 6 will help, if we have the repository already available on local.</p>
+<p>Now that the configurations are in place, we can go ahead and clone the corresponding repositories. On cloning, make a note that we use the host names that we used in the SSH config.</p>
+<p>Repositories can be cloned using the clone command Git provides:</p>
+<div class="highlight-git notranslate"><div class="highlight"><pre><span></span>git clone git@github.com:personal_account_name/repo_name.git
+</pre></div>
+</div>
+<p>The work repository will require a change to be made with this command:</p>
+<div class="highlight-git notranslate"><div class="highlight"><pre><span></span>git clone git@github.com-work:OperationsManagement/ora.git
+</pre></div>
+</div>
+<p>This change is made depending on the host name defined in the SSH config. The string between <strong>&#64; and :</strong> should replaced by <strong>Host</strong> we have given in the SSH config file.</p>
+</section>
+<section id="for-locally-existing-repositories">
+<h2>6 - For Locally Existing Repositories<a class="headerlink" href="#for-locally-existing-repositories" title="Permalink to this headline">#</a></h2>
+<p>If we have the repository already cloned, and list the Git remote of the repository using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">remote</span> <span class="pre">-v</span></code>.</p>
+<p>Check whether the URL matches our GitHub host to be used, otherwise update the remote origin URL.</p>
+<div class="highlight-git notranslate"><div class="highlight"><pre><span></span>git remote set-url origin git@github.com-worker:OperationsManagement/ora.git
+</pre></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "kunzhoudk/kzspace",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./github"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../docker/03-networks-requests.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Networks &amp; Requests</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="undo-changes.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Undo Changes in Git: git checkout, git revert, &amp; git reset</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Kun Zhou<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

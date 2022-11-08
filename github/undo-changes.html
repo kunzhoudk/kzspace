@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Networks &amp; Requests" href="../docker/03-networks-requests.html" />
+    <link rel="prev" title="Using Multiple GitHub Accounts and SSH Keys" href="multiple-github-accounts-ssh.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -173,6 +173,11 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="multiple-github-accounts-ssh.html">
+   Using Multiple GitHub Accounts and SSH Keys
+  </a>
+ </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Undo Changes in Git: git checkout, git revert, &amp; git reset
@@ -443,7 +448,7 @@ title="Print to PDF"
 <section id="undoing-a-specific-commit-that-has-been-pushed">
 <h2>Undoing a Specific Commit (That Has Been Pushed)<a class="headerlink" href="#undoing-a-specific-commit-that-has-been-pushed" title="Permalink to this headline">#</a></h2>
 <p>If you have one specific commit you want to undo, you can revert it as follows:</p>
-<ol class="simple">
+<ol>
 <li><p>In your terminal , navigate to the folder for your Git repo.</p></li>
 <li><p>Run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> and make sure you have a clean working tree.</p></li>
 <li><p>Each commit has a unique hash (which looks something like 2f5451f). You need to find the hash for the commit you want to undo. Here are two places you can see the hash for commits:</p>
@@ -455,8 +460,10 @@ title="Print to PDF"
 <li><p>Once you know the hash for the commit you want to undo, run the following command (replacing <code class="docutils literal notranslate"><span class="pre">2f5451f</span></code> with your commit’s hash):</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">revert</span> <span class="pre">2f5451f</span> <span class="pre">--no-edit</span></code></p></li>
-<li><p>NOTE: The <code class="docutils literal notranslate"><span class="pre">--no-edit</span></code> option prevents git from asking you to enter in a commit message. If you don’t add that option, you’ll end up in the  text editor.</p></li>
 </ul>
+<blockquote>
+<div><p>NOTE: The <code class="docutils literal notranslate"><span class="pre">--no-edit</span></code> option prevents git from asking you to enter in a commit message. If you don’t add that option, you’ll end up in the  text editor.</p>
+</div></blockquote>
 </li>
 <li><p>This will make a new commit that is the opposite of the existing commit, reverting the file(s) to their previous state as if it was never changed.</p></li>
 <li><p>If working with a remote repo, you can now push those changes:</p>
@@ -484,7 +491,7 @@ title="Print to PDF"
 <section id="undoing-local-changes-that-have-been-committed-but-not-pushed">
 <h2>Undoing Local Changes That Have Been Committed (But Not Pushed)<a class="headerlink" href="#undoing-local-changes-that-have-been-committed-but-not-pushed" title="Permalink to this headline">#</a></h2>
 <p>If you have made local commits that you don’t like, and they have not been pushed yet you can reset things back to a previous good commit. It will be as if the bad commits never happened. Here’s how:</p>
-<ol class="simple">
+<ol>
 <li><p>In your terminal, navigate to the folder for your Git repo.</p></li>
 <li><p>Run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> and make sure you have a clean working tree.</p></li>
 <li><p>Each commit has a unique hash (which looks something like <code class="docutils literal notranslate"><span class="pre">2f5451f</span></code>). You need to find the hash for the last good commit (the one you want to revert back to). Here are two places you can see the hash for commits:</p>
@@ -497,8 +504,10 @@ title="Print to PDF"
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">reset</span> <span class="pre">2f5451f</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">reset</span> <span class="pre">--hard</span> <span class="pre">2f5451f</span></code></p></li>
-<li><p>NOTE: If you do <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">reset</span></code> the commits will be removed, but the changes will appear as uncommitted, giving you access to the code. This is the safest option, because maybe you wanted some of that code and you can now make changes and new commits that are good. Often though you’ll want to undo the commits and through away the code, which is what <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">reset</span> <span class="pre">--hard</span></code> does.</p></li>
 </ul>
+<blockquote>
+<div><p>NOTE: If you do <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">reset</span></code> the commits will be removed, but the changes will appear as uncommitted, giving you access to the code. This is the safest option, because maybe you wanted some of that code and you can now make changes and new commits that are good. Often though you’ll want to undo the commits and through away the code, which is what <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">reset</span> <span class="pre">--hard</span></code> does.</p>
+</div></blockquote>
 </li>
 </ol>
 <p><strong>Resources</strong>: <a class="reference external" href="https://www.nobledesktop.com/learn/git/undo-changes">https://www.nobledesktop.com/learn/git/undo-changes</a></p>
@@ -532,11 +541,11 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../docker/03-networks-requests.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="multiple-github-accounts-ssh.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Networks &amp; Requests</p>
+            <p class="prev-next-title">Using Multiple GitHub Accounts and SSH Keys</p>
         </div>
     </a>
 </div>
