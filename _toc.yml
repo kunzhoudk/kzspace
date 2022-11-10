@@ -32,6 +32,10 @@ parts:
     chapters:
     - file: github/multiple-github-accounts-ssh
     - file: github/undo-changes
+  - caption: Java
+    chapters:
+    - file: Java/manage-multiple-java-version-MacOs
+
 # chapters:
 # - file: markdown
 # - file: notebooks
